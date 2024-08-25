@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.1/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container mt-4">
+    <h2 class="text-center">Product List</h2>
+    <table class="table table-striped mt-4">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}">1</td>
+            <td th:text="${product.name}">Product Name</td>
+            <td th:text="${product.price}">100.0</td>
+            <td>
+                <a th:href="@{/showFormForUpdate/{id}(id=${product.id})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/deleteProduct/{id}(id=${product.id})}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/addProduct}" class="btn btn-success mt-3">Add New Product</a>
+</div>
+
+<script th:src="@{/webjars/bootstrap/5.3.1/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
